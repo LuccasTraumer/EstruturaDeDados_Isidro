@@ -25,6 +25,18 @@ public class Lista{
 			novo.setProximo(inicio);
 		}
 	}
+	public void removerFila(){
+		Caixinha novo = inicio;
+		novo.setProximo(novo.getProximo());
+		inicio = novo;
+		do{
+			System.out.println(novo.getElemento());
+			novo = novo.getProximo();
+		}while(novo != inicio);
+	}
+	public void removerPilha(){
+
+	}
 	public void exixbirNaOrdem(){
 		Caixinha tmp;
 		tmp = inicio;

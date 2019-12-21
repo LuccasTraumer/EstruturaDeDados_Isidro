@@ -6,6 +6,7 @@ public class MyApp{
 		test.inserir(62);
 		test.exixbirNaOrdem();
 		System.out.println("-------------------------------------");
-		test.exibirNaOrdemInversa();
+		test.removerFila();
+		//System.out.println(test.toString());
 	}
 }
