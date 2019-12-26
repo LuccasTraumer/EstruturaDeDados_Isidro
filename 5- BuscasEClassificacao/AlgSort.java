@@ -14,13 +14,54 @@ public class AlgSort{
 					valores[pos+1] = temp;
 				}
 			}
-			System.out.println("------------> Final da Interacao "+ it);
-			mostrar();
 		}
 	}
 
+	public void selectionSortValores(){
+		// Esta trocando os Valores não os Indices, DESSE MODO É BEM MENOS EFICIENTE POIS VAI FICAR TROCANDO MAIS VEZES
+		int posMenorInicial,posMenor,temp;
+		for(posMenorInicial=0; posMenorInicial < valores.length-1;posMenorInicial++){
+			for(posMenor = posMenorInicial+1; posMenor < valores.length-1;posMenor++){
+				if(valores[posMenorInicial] > valores[posMenor]){
+					temp = valores[posMenorInicial];
+					valores[posMenorInicial] = valores[posMenor];
+					valores[posMenor] = temp;
+				}
+			}
+		}
+	}
+	public void selectionSortIndice(){
+		int ind,indSeg,temp,posInicial,posMenor;
+		for(ind=0; ind < valores.length-1; ind++){
+			posInicial = ind;
+			posMenor = ind+1;
+			for(indSeg = ind+1; indSeg < valores.length-1;indSeg++){
+				if(valores[indSeg] < valores[posMenor]) // O indSeg vai correr os demais valores,
+				{
+					posMenor = indSeg; // o posMenor vai ser alterado caso dentro do vetor tenha um valor menor que aquele, só ira armaznar o indice
+				}
+			}
+			if(valores[posMenor] < valores[posInicial]){
+				temp = valores[posInicial];
+				valores[posInicial] = valores[posMenor];
+				valores[posMenor] = temp;
+			}
+		}
+	}
+	public void insertionSort(){
+		int indice,indiceAnterior,valorAtual;
+		for(indice = 1; indice < valores.length; indice++){
+			valorAtual = valores[indice];
+			for(indiceAnterior = indice-1; (indiceAnterior >= 0 && valores[indiceAnterior] > valorAtual); indiceAnterior--){
+				valores[indiceAnterior+1] = valores[indiceAnterior];
+			}
+			valores[indiceAnterior+1] = valorAtual;
+		}
+		mostrar();
+	}
 	public void mostrar(){
 		for(int i=0; i < valores.length;i++)
 			System.out.print(valores[i] + "  ");
 	}
+
 }
