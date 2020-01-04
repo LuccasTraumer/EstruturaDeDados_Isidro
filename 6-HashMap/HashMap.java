@@ -8,19 +8,19 @@ public class HashMap {
         int posicao = novo.hashCode();
         if(valores[posicao] == null){ // se não tem ninguem na posicao
             valores[posicao] = novo;
-            System.out.println("Posicao "+novo.getCodigo() +" -- INSERINDO VALOR!");
+            //System.out.println("Posicao "+novo.getCodigo() +" -- INSERINDO VALOR!");
         }else {
             System.out.println("Ops colisão..");
             Registro reg = valores[posicao];
             if (reg.getCodigo() == novo.getCodigo()) { // Verifica a Primeira posicao e encontar aquela chave
                 reg.setNome(novo.getNome()); // muda o nome
-                System.out.println("REGISTRO EXISTENTE, ATUALIZANDO VALOR..");
+                //System.out.println("REGISTRO EXISTENTE, ATUALIZANDO VALOR..");
                 return;
             }
             while (reg.getProximo() != null) { // enquanto tiver registro
                 if (reg.getCodigo() == novo.getCodigo()) { // se o codico for igual do objeto passado
                     reg.setNome(novo.getNome()); // troca o nome
-                    System.out.println("REGISTRO EXISTENTE, ATUALIZANDO VALOR..");
+                    //System.out.println("REGISTRO EXISTENTE, ATUALIZANDO VALOR..");
                     return;
                 }
                 reg = reg.getProximo();
@@ -29,11 +29,11 @@ public class HashMap {
 
             if(reg.getCodigo() == novo.getCodigo()) {
                 reg.setNome(novo.getNome());
-                System.out.println("REGISTRO EXISTENTE, ATUALIZANDO VALOR..");
+                //System.out.println("REGISTRO EXISTENTE, ATUALIZANDO VALOR..");
             }
 
             reg.setProximo(novo); // COloquei o novo registro na ultima posicao
-            System.out.println("REGISTRO INEXISTENTE, INSERINDO VALOR..");
+            //System.out.println("REGISTRO INEXISTENTE, INSERINDO VALOR..");
         }
     }
     public Registro get(int codigo){
