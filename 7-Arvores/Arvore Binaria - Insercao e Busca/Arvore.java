@@ -16,8 +16,54 @@ public class Arvore{
 		//System.out.println("Criei a Arvore com o elemento "+ elem.getValor());
 	}
 	// Metodos de Controle
+
+	//Remoção
+	public Arvore remover(Elemento elem){
+		// Encontrei o elemento
+		if(elem.getValor() == this.elemento.getValor()){
+			// Caso 1 - Elemento Folha
+			if(this.esquerda == null && this.direita == null){
+				return null;
+			}
+			else{
+				// Caso 2 - Tenho Filhos a ESQUERDA mas NÃO tenho a DIREITA
+				if(this.esquerda != null && this.direita == null){
+					return this.esquerda;
+				}
+				// Caso 3 - Tenho Filhos a DIREITA mas NÃO tenho a ESQUERDA
+				else if(this.direita != null && this.esquerda == null){
+					return this.direita;
+				}
+				// Caso 4 - Tenho Filhos dos dois lados, Vou subtituir esse valor pelo Menor entre o Maiores ou Maior entre os menores
+				// Vou substituir pelo MAIOR entre os MENORES
+				else{
+					Arvore aux = this.esquerda;
+					while(aux.direita != null){
+						aux = aux.direita;
+					}
+					// Passo para o this o ultimo elemento
+					this.elemento = aux.getElemento();
+					// troco o ultimo elemento pelo que vou remover
+					aux.setElemento(elem);
+					// Chamo a função de remover
+					this.esquerda = esquerda.remover(elem);
+				}
+			}
+		}else if(elem.getValor() < this.elemento.getValor()){
+			// Delegar(repassa) a responsabilidade a sub-arvore da esquerda
+			this.esquerda = this.esquerda.remover(elem);
+		}else if(elem.getValor() > this.elemento.getValor()){
+			// delega(repassa) a responsabilidade a sub-arvore da direita
+			this.direita = this.direita.remover(elem);
+		}
+
+		return this;
+	}
+
+	// Verificação
 	public boolean isEmpty(){ return (this.elemento == null);}
 
+	// Inserção
 	public void inserir(Elemento novo){
 		if(isEmpty()){
 			this.elemento = novo;
